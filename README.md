@@ -2,7 +2,7 @@
 
 # DISLEXICO: Distribución dialectal de Colombia basada en mapas del Atlas Lingüístico Etnográfico de Colombia (ALEC)
 
-Instituto Caro y Cuervo.\s\s
+Instituto Caro y Cuervo.<br/>
 Seminario Andrés Bello. \s\s
 Maestría en Lingüística.\s\s
 Seminario de Cambio y variación lingüística.\s\s
