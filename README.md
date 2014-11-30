@@ -22,14 +22,14 @@ correo electrónico: nestor.ruiz@caroycuervo.gov.co  <br/>
 
 ## Equipo de trabajo
 
-Youlín Yandiria Ávila
+Youlín Yandiria Ávila<br/>
 Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: 
 * Carga de datos (Mapas del Tomo 5 y 6)
 * Análisis de datos.
 correo electrónico: Youlin.yandiria.avila@gmail.com
-
+_______________________________________
 Fredy Mendieta<br/>
 Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
