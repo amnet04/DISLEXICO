@@ -22,7 +22,7 @@ correo electrónico: nestor.ruiz@caroycuervo.gov.co  <br/>
 
 ## Equipo de trabajo
 
-Youlín Yandiria Ávila<br/>
+__Youlín Yandiria Ávila__<br/>
 Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: 
@@ -30,7 +30,7 @@ Participación:
 * Análisis de datos.
 correo electrónico: Youlin.yandiria.avila@gmail.com
 
-Fredy Mendieta<br/>
+__Fredy Mendieta__<br/>
 Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: 
@@ -38,7 +38,7 @@ Participación:
 * Análisis de datos.<br/>
 correo electrónico: fredy.mendieta@gmail.com
 
-Ana Constanza Rodríguez Álvarez <br/>
+__Ana Constanza Rodríguez Álvarez__ <br/>
 Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: 
@@ -46,7 +46,7 @@ Participación:
 * Análisis de datos.
 correo electrónico: ana.constanza@gmail.com
 
-Carlos Alberto Rodríguez Díaz<br/>
+__Carlos Alberto Rodríguez Díaz__<br/>
 Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: 
@@ -56,7 +56,7 @@ Participación:
 * Desarrollo de la aplicación.
 correo electrónico:          amnet04@gmail.com 
 
-Fabio Silva<br/>
+__Fabio Silva__<br/>
 Estudiante de la Maestría en Lingüística. <br/> 
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/> 
 Participación: 
