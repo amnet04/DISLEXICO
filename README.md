@@ -14,7 +14,7 @@ Andrés Bello, unidad académica del Instituto Caro y Cuervo.
 
 ## Docente:  
 Néstor Fabián Ruiz Vásquez<br/>
-Director de la Maestría en lingüística. <br/>
+Director de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: Directrices teorícas y creación del teselado báse.<br/>
 Dirección:          Calle 10 No. 4 – 69, Bogotá, Colombia<br/>
@@ -23,32 +23,32 @@ correo electrónico: nestor.ruiz@caroycuervo.gov.co  <br/>
 ## Equipo de trabajo
 
 Youlín Yandiria Ávila
-Estudiante de la Maestría en lingüística. 
+Estudiante de la Maestría en Lingüística. 
 Instituto Caro y Cuervo, Seminario Andrés Bello
 Participación: Carga de datos (Mapas del Tomo 5 y 6), análisis de datos.
 correo electrónico: Youlin.yandiria.avila@gmail.com
 
 Fredy Mendieta
-Estudiante de la Maestría en lingüística. 
+Estudiante de la Maestría en Lingüística. 
 Instituto Caro y Cuervo, Seminario Andrés Bello
 Participación: Carga de datos (Mapas del Tomo 3 y 6), análisis de datos.
 correo electrónico: fredy.mendieta@gmail.com
 
 Ana Constanza Rodríguez Álvarez 
-Estudiante de la Maestría en lingüística. 
+Estudiante de la Maestría en Lingüística. 
 Instituto Caro y Cuervo, Seminario Andrés Bello
 Participación: Carga de datos (Mapas del Tomo 2 y 6), análisis de datos.
 correo electrónico: ana.constanza@gmail.com
 
 Carlos Alberto Rodríguez Díaz, 
-Estudiante de la Maestría en lingüística. 
+Estudiante de la Maestría en Lingüística. 
 Instituto Caro y Cuervo, Seminario Andrés Bello
 Participación: Carga de datos (Mapas del Tomo 4 y 6), análisis de datos,
 desarrollo de la aplicación.
 correo electrónico:          amnet04@gmail.com 
 
 Fabio Silva
-Estudiante de la Maestría en lingüística. 
+Estudiante de la Maestría en Lingüística. 
 Instituto Caro y Cuervo, Seminario Andrés Bello
 Participación: Carga de datos (Mapas del Tomo 4 y 6), análisis de datos,
 apoyo teórico.
