@@ -1,13 +1,13 @@
-![ICC](https://cloud.githubusercontent.com/assets/72919/2874231/3af1db48-d3dd-11e3-98dc-6066f8bc766f.png)
+![ICC](http://www.caroycuervo.gov.co/sites/all/themes/openpublic_icc/logo.png)
 
 # Dislexico
 Distribución dialectal de Colombia basada en mapas del Atlas Lingüístico
 Etnográfico de Colombia (ALEC)
 
-## Instituto Caro y Cuervo
-## Seminario Andrés Bello
-## Maestría en Lingüística
-## Seminario de Cambio y variación lingüística
+Instituto Caro y Cuervo.
+Seminario Andrés Bello.
+Maestría en Lingüística.
+Seminario de Cambio y variación lingüística.
 
 # Autoría
 Este software se desarrollo como parte del trabajo del Seminario de Cambio
