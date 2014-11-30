@@ -1,12 +1,12 @@
 ![ICC](http://www.caroycuervo.gov.co/sites/all/themes/openpublic_icc/logo.png)
 
-# DISLEXICO: Distribución dialectal de Colombia basada en mapas del Atlas Lingüístico
-Etnográfico de Colombia (ALEC)
+# DISLEXICO: Distribución dialectal de Colombia basada en mapas del Atlas Lingüístico Etnográfico de Colombia (ALEC)
 
-Instituto Caro y Cuervo.\s
-Seminario Andrés Bello. \s
-Maestría en Lingüística.\s
-Seminario de Cambio y variación lingüística.\s
+Instituto Caro y Cuervo.\s\s
+Seminario Andrés Bello. \s\s
+Maestría en Lingüística.\s\s
+Seminario de Cambio y variación lingüística.\s\s
+2014
 
 # Autoría
 Este software se desarrollo como parte del trabajo del Seminario de Cambio
