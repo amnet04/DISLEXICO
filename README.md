@@ -29,7 +29,7 @@ Participación:
 * Carga de datos (Mapas del Tomo 5 y 6)
 * Análisis de datos.
 correo electrónico: Youlin.yandiria.avila@gmail.com
-- - -
+<hr />
 Fredy Mendieta<br/>
 Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
