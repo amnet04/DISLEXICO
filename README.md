@@ -27,7 +27,7 @@ Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: 
 * Carga de datos (Mapas del Tomo 5 y 6)
-* Análisis de datos.
+* Análisis de datos.<br/> 
 correo electrónico: Youlin.yandiria.avila@gmail.com
 
 __Fredy Mendieta__<br/>
@@ -43,7 +43,7 @@ Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: 
 * Carga de datos (Mapas del Tomo 2 y 6)
-* Análisis de datos.
+* Análisis de datos.<br/> 
 correo electrónico: ana.constanza@gmail.com
 
 __Carlos Alberto Rodríguez Díaz__<br/>
@@ -53,7 +53,7 @@ Participación:
 * Carga de datos (Mapas del Tomo 4 y 6)
 * Análisis de datos.
 * Adaptación del teselado
-* Desarrollo de la aplicación.
+* Desarrollo de la aplicación.<br/> 
 correo electrónico:          amnet04@gmail.com 
 
 __Fabio Silva__<br/>
@@ -62,6 +62,6 @@ Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: 
 * Carga de datos (Mapas del Tomo 4 y 6)
 * Análisis de datos.
-* Apoyo teórico.
+* Apoyo teórico.<br/> 
 correo electrónico:         fabionelsonsilva@gmail.com
  
