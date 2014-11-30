@@ -3,10 +3,9 @@
 # DISLEXICO: Distribución dialectal de Colombia basada en mapas del Atlas Lingüístico Etnográfico de Colombia (ALEC)
 
 Instituto Caro y Cuervo.<br/>
-Seminario Andrés Bello. \s\s
-Maestría en Lingüística.\s\s
-Seminario de Cambio y variación lingüística.\s\s
-2014
+Seminario Andrés Bello. <br/>
+Maestría en Lingüística.<br/>
+Seminario de Cambio y variación lingüística.<br/>
 
 # Autoría
 Este software se desarrollo como parte del trabajo del Seminario de Cambio
@@ -14,12 +13,12 @@ y Variación Lingüística de la Maestría de Lingüística del Seminario
 Andrés Bello, unidad académica del Instituto Caro y Cuervo.
 
 ## Docente:  
-Néstor Fabián Ruiz Vásquez\s
-Director de la Maestría en lingüística. \s
-Instituto Caro y Cuervo, Seminario Andrés Bello.\s
-Participación: Directrices teorícas y creación del teselado báse.\s
-Dirección:          Calle 10 No. 4 – 69, Bogotá, Colombia\s
-correo electrónico: nestor.ruiz@caroycuervo.gov.co  \s
+Néstor Fabián Ruiz Vásquez<br/>
+Director de la Maestría en lingüística. <br/>
+Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
+Participación: Directrices teorícas y creación del teselado báse.<br/>
+Dirección:          Calle 10 No. 4 – 69, Bogotá, Colombia<br/>
+correo electrónico: nestor.ruiz@caroycuervo.gov.co  <br/>
 
 ## Equipo de trabajo
 
