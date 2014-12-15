@@ -7,6 +7,12 @@ require(RColorBrewer);
 require(httr)
 options(stringsAsFactors = F)
 
+# Clustering
+cluster <- function(a){
+  distancia = as.dist(a)
+  cluster <- hclust(distancia)
+}
+
 #Función para crear el mapa 
 mapaInicial <- function( width = '100%', height=560 , lat=7, lng=-73, clusters=12 ,tileLayer="http://otile4.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png"){
   
