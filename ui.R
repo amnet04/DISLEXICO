@@ -8,82 +8,136 @@
 library(shiny)
 
 
-shinyUI(navbarPage("DialectALEC Vresión 0.0 (Dialectología basada en DIStribución LÉXica en COlombia, DISLEXICO)",
-  tabPanel("Distribuciónes dialectales",
-    fluidPage(    
-      fluidRow(
-         column( width=2,
-          
-        selectInput("Layer", label = "Elija el mapa de fondo", 
-                    choices = list(
-                      "Open Street Map, transport" = "http://a.tile.thunderforest.com/transport/{z}/{x}/{y}.png", 
-                      "MapQuest" = "http://otile4.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png",
-                      "Ninguno" = "nada"), 
-                    selected = 2),
+shinyUI(
+  navbarPage("DialectALEC Versión 0.0 (Dialectometría  basada en DIStribución LÉXica en COlombia, DISLEXICO)",
+    tabPanel("Mapas",
+             
+      tabsetPanel(
         
-        selectInput("Clusters", label = "Elija el número de agrupaciones", 
-                    choices = c(
-                      "2" = 2, 
-                      "3" = 3,
-                      "4" = 4,
-                      "5" = 5, 
-                      "6" = 6,
-                      "7" = 7,
-                      "8" = 8, 
-                      "9" = 9,
-                      "10" = 10,
-                      "11" = 11, 
-                      "12" = 12                      
-                    ), 
-                    selected = 12),
-        
-        selectInput("Layer", label = "Elija el tipo de análisis", 
-                    choices = list(
-                      "Diferencias léxicas" = "diferencias", 
-                      "Similaridades léxicas" = "similaridades",
-                      "Identidad relativa" = "identidad"                     
-                    ), 
-                    selected = 12)
+        tabPanel("Mapas de distribución general",
+          fluidPage(    
+            fluidRow(
+              column( width=2,
+                
+                selectInput("Layer", label = "Elija el mapa de fondo", 
+                  choices = list(
+                    "Open Street Map, transport" = "http://a.tile.thunderforest.com/transport/{z}/{x}/{y}.png", 
+                    "MapQuest" = "http://otile4.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png",
+                    "Ninguno" = "nada"), 
+                      selected = 2
+                  ),
+                                                   
+                selectInput("Clusters", label = "Elija el número de agrupaciones", 
+                  choices = c(
+                    "2" = 2, 
+                    "3" = 3,
+                    "4" = 4,
+                    "5" = 5, 
+                    "6" = 6,
+                    "7" = 7,
+                    "8" = 8, 
+                    "9" = 9,
+                    "10" = 10,
+                    "11" = 11, 
+                    "12" = 12                      
+                  ), 
+                  selected = 12
+                ),
+                                                   
+                selectInput("Matriz", label = "Elija el tipo de análisis", 
+                  choices = list(
+                    "Diferencias léxicas" = "diferencias", 
+                    "Similaridades léxicas" = "similaridades",
+                    "Identidad relativa" = "IIR"
+                  ), 
+                  selected = "diferencias"
+                )
+              ),
+                                           
+              column( 
+                width=6,
+                chartOutput('map_container', 'leaflet')
+              ),
+                                           
+              column(
+                width=4, 
+                tags$h3("Dendrograma"), 
+                HTML('<div id="dendrograma" style="width:100%; height:560px; overflow: scroll;">'), 
+                HTML('</div>')
+              )   
+            )
+          ) 
         ),
-        
-        column( width=6,
-          tabsetPanel(
-            tabPanel("Mapa", 
-                     mapOutput('map_container'),
-                     absolutePanel(
-                       id = "controls", class = "modal", fixed = TRUE, draggable = TRUE,
-                       top = 150, left = "auto", right = 617, bottom = "auto",
-                       width = 90, height = "auto",
-                       HTML('<i style="float: left; height: 18px ;margin-right: 8px;
-                            width: 18px; background:'),
-                       RColorBrewer::brewer.pal(12, 'Paired')[1],
-                       HTML('"></i>')
-                     )
-                     
-            ),
-            
-            tabPanel("Matriz de diferencias", tableOutput('diferencias')),
-            tabPanel("Matriz de similaridad"),
-            tabPanel("Indice general de identidad")
-          )       
-        ),
-        
-        column(width=4, 
-              tags$h3("Dendrograma"), 
-              HTML('<div id="dendrograma" style="width:100%; height:560px; overflow: scroll;">'), 
-              plotOutput('dendrograma', width = "100%"),
-              HTML('</div>')
+                            
+        tabPanel("Mapas de comparacion por lugar",
+          fluidPage(    
+            fluidRow(
+              column( width=2,
+                           
+                selectInput("LayerLoc", label = "Elija el mapa de fondo", 
+                  choices = list(
+                  "Open Street Map, transport" = "http://a.tile.thunderforest.com/transport/{z}/{x}/{y}.png", 
+                  "MapQuest" = "http://otile4.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png",
+                  "Ninguno" = "nada"
+                  ), 
+                  selected = 2
+                ),
+                           
+                selectInput("ClustersLoc", label = "Elija el número de agrupaciones", 
+                  choices = c(
+                    "2" = 2, 
+                    "3" = 3,
+                    "4" = 4,
+                    "5" = 5, 
+                    "6" = 6,
+                    "7" = 7,
+                    "8" = 8, 
+                    "9" = 9,
+                    "10" = 10,
+                    "11" = 11, 
+                    "12" = 12                      
+                  ), 
+                  selected = 12
+                ),
+                           
+                selectInput("MatrizLoc", label = "Elija el tipo de análisis", 
+                  choices = list(
+                    "Diferencias léxicas" = "diferencias", 
+                    "Similaridades léxicas" = "similaridades",
+                    "Identidad relativa" = "IIR"
+                  ), 
+                selected = "diferencias"
+                )
+              ),
+                   
+              column( 
+                width=6,
+                chartOutput('map_container_loc', 'leaflet')
+              ),
+                   
+              column(
+                width=4, 
+                tags$h3("Histograma"), 
+                HTML('<div id="dendrograma" style="width:100%; height:560px; overflow: scroll;">'), 
+                HTML('</div>')
+               )   
+              )
+            ) 
+          )
         )
-
-
-      )
-     
-      
-    ) 
-  
+      ),
+                   
+      tabPanel(
+        "Tablas",  
+        tabsetPanel(
+          tabPanel("Matriz de diferencias", dataTableOutput('diferencias')),
+          tabPanel("Matriz de similaridad", dataTableOutput('similaridades')),
+          tabPanel("Indice general de identidad",dataTableOutput('IIR')),
+          tabPanel("Vacios por localidad",dataTableOutput('vacios')),
+          tabPanel("Referencia de vacios comunes",dataTableOutput('referenciaVacios'))
+      )       
+    )
   )
-
-))
-
+)
 
 

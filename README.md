@@ -8,15 +8,15 @@ Maestría en Lingüística.<br/>
 Seminario de Cambio y variación lingüística.<br/>
 
 # Autoría
-Este software se desarrollo como parte del trabajo del Seminario de Cambio
-y Variación Lingüística de la Maestría de Lingüística del Seminario
-Andrés Bello, unidad académica del Instituto Caro y Cuervo.
+Este software se desarrolló como parte del trabajo del Seminario de Cambio
+y Variación Lingüística (2014) de la Maestría de Lingüística del Seminario
+Andrés Bello , unidad académica del Instituto Caro y Cuervo.
 
 ## Docente:  
 __Néstor Fabián Ruiz Vásquez__<br/>
 Director de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
-Participación: Directrices teorícas y creación del teselado base.<br/>
+Participación: Directrices teóricas y creación del teselado base.<br/>
 Dirección:          Calle 10 No. 4 – 69, Bogotá, Colombia<br/>
 correo electrónico: nestor.ruiz@caroycuervo.gov.co  <br/>
 

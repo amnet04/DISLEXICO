@@ -8,25 +8,25 @@
 archivos <- list.files("data/respuestas", pattern="*.csv", full.names=TRUE)
 
 # Cargar los nombres de los archivos en una lista para utilizarlos como referencia
-archiv_name <- list.files("data/respuestas", pattern="*.csv", full.names=FALSE)
+fileName <- list.files("data/respuestas", pattern="*.csv", full.names=FALSE)
 
 # Unificar los nombres de los archivos
-tmpName = archiv_name 
+tmpName = fileName 
 tmpName <- as.vector(sapply(tmpName,  function(x) sub(".csv","",x)))
 tmpName <- as.vector(sapply(tmpName,  function(x) sub("Tomo1","TomoI",x)))
 tmpName <- as.vector(sapply(tmpName,  function(x) sub("tomo","Tomo",x)))
 tmpName <- as.vector(sapply(tmpName,  function(x) sub("mapa","Mapa",x)))
 tmpName <- as.vector(sapply(tmpName,  function(x) sub("lamina","Lamina",x)))
-archiv_name = tmpName
+fileName = tmpName
 remove(tmpName)
 
 
 # Cargar las hojas de variantes y sus datos en una lista
-hojas_variantes = sapply(archivos, function(x) read.csv(x, header = TRUE, sep = ";", row.names=1)) 
-names(hojas_variantes)=archiv_name
+listMapData = sapply(archivos, function(x) read.csv(x, header = TRUE, sep = ";", row.names=1)) 
+names(listMapData)=fileName
 # Corregir posibles espacios en blanco en las hojas de respuestas
 for(i in 1:NROW(archivos)){
-  hojas_variantes[[archiv_name[i]]][is.na(hojas_variantes[[archiv_name[i]]])] <- 0
+  listMapData[[fileName[i]]][is.na(listMapData[[fileName[i]]])] <- 0
 }
 
 
@@ -38,7 +38,7 @@ for(i in 1:NROW(archivos)){
 
 
 # Cargar los Ids de los pueblos en un vector para usarlos como referencia 
-Id = row.names(hojas_variantes[[archiv_name[1]]])
+Id = row.names(listMapData[[fileName[1]]])
 
 
 ########################################
@@ -46,53 +46,78 @@ Id = row.names(hojas_variantes[[archiv_name[1]]])
 ########################################
 
 # Contar las respuestas vacías por municipio
-tabla_resp_vacias = 1*sapply(
-    hojas_variantes, 
+tblVoidAns = 1*sapply(
+    listMapData, 
     function(x)  apply(x, 1,function(y) all(y==0))
   )
-resp_vacias_loc = apply(tabla_resp_vacias, 1, function(x) sum(x) )
+voidAnsPlace = apply(tblVoidAns, 1, function(x) sum(x) )
 
-consolidado_vacios = sapply(resp_vacias_loc, 
-                            function(x) sapply(resp_vacias_loc,
-                                               function(y) x+y)
-)
+# Se convierte voidAnsPlace en un dataframe para poder ordenarlo en las
+# tablas de la presentación web
+vacios = as.data.frame(voidAnsPlace)
+vacios = cbind(Lugar=rownames(vacios), vacios)
 
-# Se corrige la suma de las diagonales
-for(i in 1:NROW(consolidado_vacios)){
-  consolidado_vacios[i,i]=resp_vacias_loc[i]
-}
-
-# Se calcula el número de respuestas vacías en común por cada pueblo
-vacios_comunes <- matrix(0,nrow=NROW(tabla_resp_vacias), ncol=NROW(tabla_resp_vacias))
-rownames(vacios_comunes)=Id
-colnames(vacios_comunes)=Id
-for(i in 1:NCOL(tabla_resp_vacias)){
-  for(j in 1:NROW(tabla_resp_vacias)){
-    if(tabla_resp_vacias[j,i]==1){
-      for(k in 1:NROW(tabla_resp_vacias)){
-        if(tabla_resp_vacias[k,i]==1){
-          vacios_comunes[j,k]=vacios_comunes[i,j]+1
-          print (j)
+comVoid = matrix(0, nrow=NROW(tblVoidAns), ncol=NROW(tblVoidAns),  dimnames = list(Id,Id))
+for(i in 1:NCOL(tblVoidAns)){
+  print(i)
+  for(j in 1:NROW(tblVoidAns)){
+    if (tblVoidAns[j,i]==1){
+      for(k in 1:NROW(tblVoidAns)){
+        if (tblVoidAns[k,i]==1){
+          comVoid[j,k]=comVoid[j,k]+1
         }
-      }    
+      }
     }
   }
 }
+comVoid = as.data.frame(comVoid)
+
+
+comVoidMaps <- matrix("", nrow=NCOL(tblVoidAns), ncol=1,  dimnames = list(colnames(tblVoidAns),"Localidades"))
+countVoidMaps <- matrix(0, nrow=NCOL(tblVoidAns), ncol=1,  dimnames = list(colnames(tblVoidAns),"# Vacios"))
+for(i in 1:NCOL(tblVoidAns)){
+  print(i)
+  for(j in 1:NROW(tblVoidAns)){
+    if (tblVoidAns[j,i]==1){
+          comVoidMaps[[i]]=paste(comVoidMaps[[i]], rownames(tblVoidAns)[j])
+          comVoidMaps[[i]]=paste(comVoidMaps[[i]], ", ")
+          countVoidMaps[[i]]=countVoidMaps[[i]]+1
+    }
+  }
+}
+comVoidMaps=as.data.frame(comVoidMaps)
+comVoidMaps=cbind(countVoidMaps, comVoidMaps)
+
 
 ########################################
 #         Calculo de diferencias       #
 ########################################
 
-#  Función para calcular diferencias 
+#  Función para calcular diferencias  (excluyendo vacios)
 diferencia <- function (a,b)
 {
-  if(any(a+b==2)) return(0) # Si las dos localidades tienen 1 para la variable
-  else  return(1)           # la función devuelve 0, o sea no hay diferencia.                         # En cualquier otro caso devuelve 1 (diferencia)                          
+  if(any(a+b==2) | sum(a+b)==0) {    
+    return(0) # Si las dos localidades tienen 1 para la variable
+  }
+  else {
+    return(1) 
+  }           # la función devuelve 0, o sea no hay diferencia.                         # En cualquier otro caso devuelve 1 (diferencia)                          
 }
+
+diferencia_otr <- function (a,b)
+{
+  if(any(a+b==2)) {    
+    return(0) # Si las dos localidades tienen 1 para la variable
+  }
+  else {
+    return(1) 
+  }           # la función devuelve 0, o sea no hay diferencia.                         # En cualquier otro caso devuelve 1 (diferencia)                          
+}
+
 
 # Función para producir tabla de diferencias
 tablaDiferencias <- function (a){
-  tabla_diferencias = apply(
+  tblDiff = apply(
     a, 1, 
     function(x) apply(a,1, function(y) {
         diferencia(x,y)
@@ -102,26 +127,28 @@ tablaDiferencias <- function (a){
 }
 
 # Aplicación de la función de matrices de diferencias a todos los datos
-tablas_diferencias=lapply(hojas_variantes, function(x) {
-    print (names(x))
+listDiffTbl=lapply(listMapData, function(x) {
     tablaDiferencias(x)
    }  
   )
 
 # Preparación de la variable para guardar el consolidado
-consolidado_diferencias =  as.data.frame(tablas_diferencias[1])
+diferencias =  as.data.frame(listDiffTbl[1])
 
 # Suma de las 100 matrices de diferencias
-for(i in 2:NROW(tablas_diferencias)){
+for(i in 2:NROW(listDiffTbl)){
   message(i,"\r",appendLF=FALSE)
-  consolidado_diferencias = consolidado_diferencias+as.data.frame(tablas_diferencias[i])
-  colnames(consolidado_diferencias) <- Id
+  diferencias = diferencias+as.data.frame(listDiffTbl[i])
+  colnames(diferencias) <- Id
 }
 
 # Correción de la diagonal, por que el escript considera diferencias si no hay datos
-for(i in 1:NROW(consolidado_diferencias)){
-  consolidado_diferencias[i,i]=0
+for(i in 1:NROW(diferencias)){
+  diferencias[i,i]=0
 }
+
+#Normalización
+diferencias=diferencias
 
 ########################################
 #         Calculo de similaridades     #
@@ -133,11 +160,11 @@ for(i in 1:NROW(consolidado_diferencias)){
 # una nueva matriz  cuadrada que calcule la suma de respuestas 
 # vacías de cada pareja de lugares
 
-
-consolidado_similaridades = 100-consolidado_diferencias - resp_vacias_loc
+#similaridades normalizadas
+similaridades = (1-diferencias-comVoid/100)
 # Se corrige la diagonal para que cada pueblo tenga 100 similaridades con sigo mismo
-for(i in 1:NROW(consolidado_similaridades)){
-  consolidado_similaridades[i,i]=100
+for(i in 1:NROW(similaridades)){
+  similaridades[i,i]=1
 }
 
 
@@ -149,19 +176,23 @@ for(i in 1:NROW(consolidado_similaridades)){
 
 # Para calcular el IRI restulta más conveniente tener todas las variantes en la misma
 # tabla,  entonces las uno en un solo dataframe
-matriz_variantes=as.data.frame(hojas_variantes)
+matriz_variantes=as.data.frame(listMapData)
 # Eliminar posibles datos totalmente en blanco
 columnas_a_borrar<-matrix()
 cont=0
 for (i in 1:NCOL(matriz_variantes)){
   if (all(matriz_variantes[,i]==0)){
+    print(i)
     cont=cont+1
     columnas_a_borrar[cont]=i
   }
 }
-for (i in 1:NROW(columnas_a_borrar)){
+
+if (!is.na(columnas_a_borrar)){
+  for (i in 1:NROW(columnas_a_borrar)){
     print(columnas_a_borrar[i])
     matriz_variantes[columnas_a_borrar[i]]<-NULL
+  }
 }
 
 # Aprovecho para calcular la frecuencia realativa de aparición de cada variante
@@ -169,6 +200,34 @@ tbl_feq_var=apply(matriz_variantes, 2, function(x) sum(x))
 
 # Sumarizo las frecuencias para darme una idea de como calcular el peso relativo
 sumario_frec_rel=summary(tbl_feq_var)
+
+# Asigno pesos temporalmente
+matriz_peso=matrix(1, nrow=NCOL(matriz_variantes), ncol=1, dimnames=list(colnames(matriz_variantes),"peso"))
+for(i in 1:NCOL(matriz_variantes_pesada)){ 
+# Variables presentes entre 1 y 10 lugares valen 1
+
+# Variables presentes entre 11 y 22 lugares valen 0.8
+  if (10<sum(matriz_variantes[i]) & sum(matriz_variantes[i])<23){
+    matriz_peso[i]=0.8
+  }
+# Variables presentes entre 23 y 46 lugares valen 0.6
+  else if (22<sum(matriz_variantes[i]) & sum(matriz_variantes[i])<47){
+    matriz_peso[i]=0.6
+  }
+# variables presentes entre 47 y  94 lugares valen 0.5
+  else if (46<sum(matriz_variantes[i]) & sum(matriz_variantes[i])<95){
+    matriz_peso[i]=0.5
+  }
+# variables presentes entre 95 y 190 lugares valen 0.4
+  else if (94<sum(matriz_variantes[i]) & sum(matriz_variantes[i])<191){
+    matriz_peso[i]=0.4
+  }
+# variables presentes entre 191 y 237 lugares valen 0.2
+  else if (sum(matriz_variantes[i])>190){
+    matriz_peso[i]=0.2
+  }
+}
+
 
 # Histograma para entender mejor los datos
 par(mar=c(2,2.5,2,2))
@@ -185,12 +244,15 @@ coi <- function (a,b){
 
 
 tabla_coi=matrix(0, nrow=NROW(matriz_variantes), ncol=NROW(matriz_variantes), dimnames= list(Id,Id))
-# Matriz de coidentidades
+# Matriz de coidentidades sin peso
 tabla_coi <- apply(matriz_variantes,1, 
              function(x) apply(matriz_variantes, 1,
                 function(y) coi(x,y)
                 ) 
              )
+
+# Matriz de identidades con peso################ TODO
+
 
 #calculo de coodiferencias
 cod <- function (a,b){
@@ -204,23 +266,35 @@ tabla_cod <- apply(matriz_variantes,1,
                    ) 
 )
 
-# Matriz de identidades relativas
+# Matriz de identidades relativas normalizada, llevada a diferencias para hcluster
 
-IIR = 100*tabla_coi/(tabla_coi+tabla_cod)
+IIR = 1-tabla_coi/(tabla_coi+tabla_cod)
+
+# Matriz de coidentidades llevada a diferencias para hcluster
+tabla_coi=1-tabla_coi
+
+
+#############################################################
+#                                                           #
+#                     Teselados                             #
+#                                                           #
+#############################################################
 
 # Clustering
-cluster <- function(a){
-distancia = as.dist(a)
-cluster <- hclust(distancia)
+cluster <- function(a, simdis="dist"){
+  distancia = as.dist(a)
+  cluster <- hclust(distancia)
+  return (cluster)
 }
+################################
+# Preparación de los teselados #
+################################
 
-
-# Mapas
-colorear_dialectos <- function(nivel){
-  llenado=as.data.frame(list(grupo=cutree(cluster,k=nivel)))
+colorear_dialectos <- function(nivel, tipo){
+  llenado=as.data.frame(list(grupo=cutree(cluster(tipo),k=nivel)))
   row.names(llenado)=Id
   colnames(llenado)=c("grupo")
-  llenado[,"grupo"]=as.vector(cutree(cluster,k=nivel))
+  llenado[,"grupo"]=as.vector(cutree(cluster(tipo),k=nivel))
   llenado$color=sapply(llenado[,"grupo"], 
                        function (x) RColorBrewer::brewer.pal(12, 'Paired')[round(seq(from = 1, to = 12, by = 11/(nivel-1)))[x]])
   return(llenado$color)
@@ -232,18 +306,13 @@ teselado <- RJSONIO::fromJSON("data/geo/ALECSTY.json")
 #Incluir número de respuestas vacias en los datos del mapa
 for(i in 1:NROW(teselado["features"])){
   for(j in 1:NROW(teselado["features"][[i]])){
-    teselado["features"][[i]][[j]]$properties$vacios=resp_vacias_loc[j][[1]]
+    teselado["features"][[i]][[j]]$properties$vacios=voidAnsPlace[j][[1]]
   }
 }
 
+save(Id, colorear_dialectos, cluster, teselado, diferencias, similaridades, IIR, vacios, comVoid, comVoidMaps, tabla_cod, tabla_coi, file= "ALEC.RData" ) 
 
-llenado_por_dialecto=colorear_dialectos(12)
-for(i in 1:NROW(teselado["features"])){
-  for(j in 1:NROW(teselado["features"][[i]])){
-    teselado["features"][[i]][[j]]$properties$style$fillColor=llenado_por_dialecto[j]
-  }
-}
 
-save(consolidado_diferencias,tabla_resp_vacias, Id, archiv_name, cluster, distancia, hojas_variantes, resp_vacias_loc, tablas_diferencias,teselado, colorear_dialectos, file="ALEC.RData")
+
 
 
