@@ -60,7 +60,7 @@ __Fabio Silva__<br/>
 Estudiante de la Maestría en Lingüística. <br/> 
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/> 
 Participación: 
-* Carga de datos (Mapas del Tomo 4 y 6)
+* Carga de datos (Mapas del Tomo 1 y 6)
 * Análisis de datos.
 * Apoyo teórico.<br/> 
 correo electrónico:         fabionelsonsilva@gmail.com
