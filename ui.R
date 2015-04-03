@@ -9,7 +9,7 @@ library(shiny)
 
 
 shinyUI(
-  navbarPage("DialectALEC Versión 0.0 (Dialectometría  basada en DIStribución LÉXica en COlombia, DISLEXICO)",
+  navbarPage("DialectALEC ",
     tabPanel("Mapas",
              
       tabsetPanel(
