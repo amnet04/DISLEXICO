@@ -50,10 +50,10 @@ __Carlos Alberto Rodríguez Díaz__<br/>
 Estudiante de la Maestría en Lingüística. <br/>
 Instituto Caro y Cuervo, Seminario Andrés Bello.<br/>
 Participación: 
+* Programación.<br/> 
 * Carga de datos (Mapas del Tomo 4 y 6)
 * Análisis de datos.
 * Adaptación del teselado
-* Desarrollo de la aplicación.<br/> 
 correo electrónico:          amnet04@gmail.com 
 
 __Fabio Silva__<br/>

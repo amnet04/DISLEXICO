@@ -1,0 +1,26 @@
+version: "3.3"  # optional since v1.27.0
+services:
+  shiny:
+    container_name: dilsexico
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: dilsexico
+    restart: always
+    user: root
+    environment:
+      - ProjectName=DialecALEC
+      - SiteVariantDataDir=/home/shiny/data/tables
+      - GeoTeselation=/home/shiny/data/geo/ALECSTY.json
+    ports:
+      - "3838:3838"
+    volumes:
+      - 'shiny_logs:/var/log/shiny_server'
+      - './scripts/shiny-server.sh:/usr/bin/shiny-server.sh'
+      - '../Proyectos/ALEC/Respuestas:/home/shiny/data/tables'
+      - '../Proyectos/ALEC/Geo:/home/shiny/data/geo'
+      - './config/shiny-server.conf:/etc/shiny-server/shiny-server.conf'
+      - './app:/home/shiny'
+    command: /usr/bin/shiny-server.sh 
+volumes:
+  shiny_logs:
