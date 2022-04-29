@@ -1,13 +1,17 @@
-#######################################################################################
-#                                                                                     #
-#         Carga, revisón y limpieza de datos                                          #
-#                                                                                     #
-#######################################################################################
+#################################################################################
+#                                                                               #
+#                  Carga, revisón y limpieza de datos                           #
+#                                                                               #
+#################################################################################
 
 # Cargar variables de entorno
 ProjectName <- Sys.getenv("ProjectName")
 SiteVariantDataDir <- Sys.getenv("SiteVariantDataDir")
 GeoTeselation <- Sys.getenv("GeoTeselation")
+
+# UI form data
+kgroups_choices = c("2" = 2,"3" = 3,"4" = 4, "5" = 5, "6" = 6, "7" = 7, "8" = 8,                                                     
+                    "9" = 9, "10" = 10, "11" = 11, "12" = 12, "13" = 13 )
 
 # Cargar los nombres de los archivos en una lista para utilizarlos como referencia
 fileNames <- list.files(path = SiteVariantDataDir, pattern = "*.csv", full.names = TRUE)
@@ -291,4 +295,17 @@ for(i in 1:NROW(teselado["features"])){
   }
 }
 
-save(Id, colorear_dialectos, cluster, teselado, diferencias, similaridades, IIR, vacios, comVoid, comVoidMaps, tabla_cod, tabla_coi, file = paste("/home/shiny/",ProjectName,".RData",sep=""))
+save(Id,
+     kgroups_choices, 
+     colorear_dialectos, 
+     cluster, 
+     teselado, 
+     diferencias, 
+     similaridades, 
+     IIR, 
+     vacios, 
+     comVoid, 
+     comVoidMaps, 
+     tabla_cod, 
+     tabla_coi, 
+     file = paste("/home/shiny/",ProjectName,".RData",sep=""))

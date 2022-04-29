@@ -28,20 +28,8 @@ shinyUI(
                   ),
                                                    
                 selectInput("Clusters", label = "Elija el número de agrupaciones", 
-                  choices = c(
-                    "2" = 2, 
-                    "3" = 3,
-                    "4" = 4,
-                    "5" = 5, 
-                    "6" = 6,
-                    "7" = 7,
-                    "8" = 8, 
-                    "9" = 9,
-                    "10" = 10,
-                    "11" = 11, 
-                    "12" = 12                      
-                  ), 
-                  selected = 12
+                  choices = kgroups_choices, 
+                  selected = 13
                 ),
                                                    
                 selectInput("Matriz", label = "Elija el tipo de análisis", 
@@ -84,20 +72,8 @@ shinyUI(
                 ),
                            
                 selectInput("ClustersLoc", label = "Elija el número de agrupaciones", 
-                  choices = c(
-                    "2" = 2, 
-                    "3" = 3,
-                    "4" = 4,
-                    "5" = 5, 
-                    "6" = 6,
-                    "7" = 7,
-                    "8" = 8, 
-                    "9" = 9,
-                    "10" = 10,
-                    "11" = 11, 
-                    "12" = 12                      
-                  ), 
-                  selected = 12
+                  choices = kgroups_choices, 
+                  selected = 13
                 ),
                            
                 selectInput("MatrizLoc", label = "Elija el tipo de análisis", 
