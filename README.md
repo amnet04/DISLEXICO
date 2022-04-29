@@ -1,4 +1,4 @@
-![ICC](instituto-caro-y-cuervo.png)
+![ICC](instituto-caro-y-cuervo.png | width=10)
 
 # DISLEXICO: Distribución dialectal de Colombia basada en mapas del Atlas Lingüístico Etnográfico de Colombia (ALEC)
 
